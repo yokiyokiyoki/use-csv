@@ -12,33 +12,28 @@
   import CSV from "comma-separated-values";
   import exportCsv from "@/util/export-csv";
   export default {
-    name: 'HelloCSV',
+    name: "HelloCSV",
     data() {
       return {
-        arr: [
-          [11, 22],
-          [33, 44]
-        ],
-        result: ''
-      }
+        arr: [[11, 22], [33, 44]],
+        result: ""
+      };
     },
     mounted() {
-      let data = JSON.stringify(this.arr)
-      this.result = new CSV(data, {
+      this.result = new CSV(this.arr, {
         header: ["数字1", "数字2"]
       }).encode();
+      console.log(this.result, this.arr);
     },
     methods: {
       load() {
-        exportCsv.download('test.csv', this.result);
+        exportCsv.download("test.csv", this.result);
       }
     }
-  }
-
+  };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
 
 </style>
